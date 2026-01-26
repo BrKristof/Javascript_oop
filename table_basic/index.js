@@ -68,3 +68,87 @@ const colspanBodyArr = [
 renderColspanBody(makeTableBodyWithHeader(colspanHeaderArr), colspanBodyArr)
 renderRowspanBody(makeTableBodyWithHeader(rowspanHeaderArr), rowspanBodyArr)
 
+
+class Table{
+
+    /**
+     * @type {HTMLTableSectionElement}
+     */
+    #tbody
+
+    /**
+     * @param {HeaderType[]} headArray 
+     */
+    constructor(headArray){
+
+        this.#tbody = makeTableBodyWithHeader(headArray)
+
+    }
+}
+
+class ColspanTable extends Table{
+
+    /**
+     * 
+     * @param {HeaderType[]} headArray 
+     */
+    constructor(headArray){
+
+        super(headArray)
+    }
+
+    /**
+     * 
+     * @param {ColspanRowType[]} ColspanRowType 
+     */
+    render(ColspanRowType){
+
+        renderColspanBody(this.tbody,ColspanRowType)
+    }
+
+}
+
+const colTable = new ColspanTable(colspanHeaderArr)
+colTable.render(colspanBodyArr)
+
+class RowspanTable extends Table{
+
+    /**
+     * 
+     * @param {HeaderType[]} headArray 
+     */
+    constructor(headArray){
+
+        super(headArray)
+    }
+
+    /**
+     * @type {RowspanRowType[]}
+     */
+    render(RowspanRowType){
+
+        renderRowspanBody(this.body,RowspanRowType)
+    }
+
+}
+
+const rowTable = new RowspanTable(rowspanHeaderArr)
+rowTable.render(rowspanBodyArr)
+
+/**
+ * 
+ * @param {string} text 
+ */
+function button(text){
+
+    const button = document.createElement('button')
+    button.innerText = text
+
+    document.body.appendChild(button)
+
+    return button
+}
+
+const vmi = button("rowspan elem hozzáadása")
+vmi.addEventListener()
+
