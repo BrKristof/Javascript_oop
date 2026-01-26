@@ -2,6 +2,9 @@
  * @typedef {{author: string, title1: string, concepts1: string, title2?: string,  concepts2?: string}} RowspanRowType  
  * @typedef {{author: string, title: string, concepts: string, concepts2?: string}} ColspanRowType
  * @typedef {{name: string, colSpan?: number}} HeaderType
+ * 
+ * @callback renderRowCallback
+ * @param {HTMLTableSectionElement}
 */
 
 /** @type {HeaderType[]}  */
@@ -84,6 +87,16 @@ class Table{
         this.#tbody = makeTableBodyWithHeader(headArray)
 
     }
+
+    get tbody(){
+
+        return this.#tbody
+    }
+
+    appendRow(callback){
+
+        callback(this.#tbody)
+    }
 }
 
 class ColspanTable extends Table{
@@ -105,6 +118,7 @@ class ColspanTable extends Table{
 
         renderColspanBody(this.tbody,ColspanRowType)
     }
+
 
 }
 
@@ -135,20 +149,23 @@ class RowspanTable extends Table{
 const rowTable = new RowspanTable(rowspanHeaderArr)
 rowTable.render(rowspanBodyArr)
 
-/**
- * 
- * @param {string} text 
- */
-function button(text){
 
-    const button = document.createElement('button')
-    button.innerText = text
 
-    document.body.appendChild(button)
+const button = document.getElementById("gomb")
+button.addEventListener('click',function(){
 
-    return button
-}
+    const rowObj = {
 
-const vmi = button("rowspan elem hozzáadása")
-vmi.addEventListener()
+        author: Appolliniare,
+        title1: "A megsebzett galamb és a szökőkút",
+        concepts1: "képvers", 
+        title2: "Búcsú",
+        concepts2: "avantgárd" 
+    }
+
+    rowTable.appendRow(function(){
+
+    })
+
+})
 
