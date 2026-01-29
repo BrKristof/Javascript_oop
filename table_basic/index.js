@@ -151,9 +151,65 @@ const rowTable = new RowspanTable(rowspanHeaderArr)
 rowTable.render(rowspanBodyArr)
 
 
+const rowbutton = createButton('gomb','rowspan elem hozzáadása')
+rowbutton.addEventListener('click', onClickRow.bind(rowTable))
 
-const button = document.getElementById("gomb")
-button.addEventListener('click',function(){
+// rowbutton.addEventListener('click',function(){
+
+//     const rowObj = {
+
+//         author: 'Appolliniare',
+//         title1: "A megsebzett galamb és a szökőkút",
+//         concepts1: "képvers", 
+//         title2: "Búcsú",
+//         concepts2: "avantgárd" 
+//     }
+
+//     rowTable.appendRow(function(tbody){
+
+//         for(const a of rowObj){
+
+//             const tr2 = document.createElement('tr')
+//             tbody.appendChild(tr2) 
+
+//             const td = document.createElement('td')
+//             td.innerText = a.author
+//             tr2.appendChild(td)
+            
+
+//             const td2 = document.createElement('td')
+//             td2.innerText = a.title1
+//             tr2.appendChild(td2)
+            
+
+//             const td3 = document.createElement('td')
+//             td3.innerText = a.concepts1
+//             tr2.appendChild(td3)
+            
+//             if(a.title2 != undefined && a.concepts2 != undefined){
+
+//                 const tr3  = document.createElement('tr')
+//                 tbody.appendChild(tr3)
+
+//                 const td4 = document.createElement('td')
+//                 td4.innerText = a.title2
+//                 tr3.appendChild(td4)
+
+//                 const td5 = document.createElement('td')
+//                 td5.innerText = a.concepts2
+//                 tr3.appendChild(td5)
+
+//                 td.rowSpan = '2'
+
+//             }
+
+//         }
+//     }
+// )})
+
+function onClickRow(e){
+
+    e.preventDefault
 
     const rowObj = {
 
@@ -164,48 +220,66 @@ button.addEventListener('click',function(){
         concepts2: "avantgárd" 
     }
 
-    rowTable.appendRow(function(tbody){
+    this.appendRow(function(body){
 
-        for(const a of rowObj){
+        const tr2 = document.createElement('tr')
+        tbody.appendChild(tr2) 
 
-            const tr2 = document.createElement('tr')
-            tbody.appendChild(tr2) 
-
-            const td = document.createElement('td')
-            td.innerText = a.author
-            tr2.appendChild(td)
+        const td = document.createElement('td')
+        td.innerText = rowObj.author
+        tr2.appendChild(td)
             
 
-            const td2 = document.createElement('td')
-            td2.innerText = a.title1
-            tr2.appendChild(td2)
+        const td2 = document.createElement('td')
+        td2.innerText = rowObj.title1
+        tr2.appendChild(td2)
             
 
-            const td3 = document.createElement('td')
-            td3.innerText = a.concepts1
-            tr2.appendChild(td3)
+        const td3 = document.createElement('td')
+        td3.innerText = rowObj.concepts1
+        tr2.appendChild(td3)
             
-            if(a.title2 != undefined && a.concepts2 != undefined){
+        if(rowObj.title2 != undefined && rowObj.concepts2 != undefined){
 
-                const tr3  = document.createElement('tr')
-                tbody.appendChild(tr3)
+            const tr3  = document.createElement('tr')
+            tbody.appendChild(tr3)
 
-                const td4 = document.createElement('td')
-                td4.innerText = a.title2
-                tr3.appendChild(td4)
+            const td4 = document.createElement('td')
+            td4.innerText = rowObj.title2
+            tr3.appendChild(td4)
 
-                const td5 = document.createElement('td')
-                td5.innerText = a.concepts2
-                tr3.appendChild(td5)
+            const td5 = document.createElement('td')
+            td5.innerText = rowObj.concepts2
+            tr3.appendChild(td5)
 
-                td.rowSpan = '2'
-
-            }
+            td.rowSpan = '2'
 
         }
-    }
-)})
+
+    })
+    
+    
+
+}
+
+const colbutton = createButton('gomb2','colspan elem hozzáadása')
 
 // a gomszab.js valamier hibat dob
 
+/**
+ * 
+ * @param {string} id 
+ * @param {string} text 
+ * @returns {HTMLButtonElement}
+ */
+function createButton(id,text){
 
+    const button = document.createElement('button')
+    button.id = id
+    button.innerText = text
+
+    document.body.appendChild(button)
+
+    return button
+
+}
