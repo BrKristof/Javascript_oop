@@ -3,7 +3,7 @@
  * 
  * 
  * @callback callbackType
- * @param {ColspanType | RowspanType}
+ * @param {(ColspanType[] | RowspanType[])} obj
  * @returns {void}
  */
 
@@ -26,7 +26,7 @@ class Manager{
     }
 
     /**
-     * @param {ColspanType | RowspanType} elem 
+     * @param {ColspanType[] | RowspanType[]} elem 
      * 
      * hozzáad egy elemet a dataArray-hez
      * ha a #addCallback-nek van értéke akkor az meghívja az adott elemre

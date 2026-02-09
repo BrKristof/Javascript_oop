@@ -35,7 +35,7 @@ class Table{
             const th = document.createElement('th')
             th.innerText = e.name
             if(e.colSpan) {
-                th.colSpan = e.colSpan
+                th.colSpan = 2
             }
             tr.appendChild(th)
         }

@@ -6,12 +6,14 @@ import { Manager } from "./manager.js"
 import { Table } from "./table.js"
 
 const manager = new Manager()
-manager.addCallback = (element) => {console.log(element)}
+manager.addCallback = (author) => (console.log(author))
 
 
-for(let a of data.colspanDataArr){
+for(const a of data.colspanDataArr){
+    
     manager.addElement(a)
 }
+
 
 new Table(data.colspanDataArr, manager)
 
