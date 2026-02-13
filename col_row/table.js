@@ -1,5 +1,10 @@
 /**
  * @import {FormFieldType, HeaderArrayType, ColspanType, RowspanType } from "./functions.js"
+ * 
+ * @callback TableCallback
+ * @param {HTMLTableSectionElement} tbody
+ * @param {ColspanType | RowspanType} elem
+ * @returns {void}
  */
 
 import { Manager } from "./manager.js"
@@ -21,6 +26,7 @@ class Table{
      */
     constructor(HeaderArray,manager){
 
+        this.#manager = manager
         const table = document.createElement('table')
         document.body.appendChild(table)
 
@@ -35,7 +41,7 @@ class Table{
             const th = document.createElement('th')
             th.innerText = e.name
             if(e.colSpan) {
-                th.colSpan = 2
+                th.colSpan = e.colSpan
             }
             tr.appendChild(th)
         }
@@ -44,6 +50,17 @@ class Table{
         table.appendChild(tbody)
         this.#tbody = tbody
 
+
+    }
+
+    /**
+     * @param {TableCallback}
+     */
+    setAppendRow(tableCallback){
+        this.#manager.addCallback = (element) =>
+        {
+            tableCallback(this.#tbody, element)
+        }
     }
 
 }
