@@ -21,7 +21,7 @@ class Table{
 
     /**
      * 
-     * @param {HeaderArrayType} HeaderArray 
+     * @param {HeaderArrayType[]} HeaderArray 
      * @param {Manager} manager 
      */
     constructor(HeaderArray,manager){
