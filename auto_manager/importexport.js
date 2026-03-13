@@ -1,0 +1,37 @@
+import { AuthorManager } from "./manager.js";
+import { ViewElement } from "./viewelement.js";
+
+class ImportExport extends ViewElement{
+
+    /**
+     * @type {AuthorManager}
+     */
+    #manager
+
+    /**
+     * 
+     * @param {string} id 
+     * @param {AuthorManager} manager 
+     */
+    constructor(id,manager){
+
+        super(id)
+        this.#manager = manager
+        const importInput = document.createElement("input")
+        importInput.type = "file"
+        this.div.appendChild(importInput)
+        importInput.addEventListener('change', (e) =>{
+            const file = e.target.files[0]
+            const reader = new FileReader()
+            reader.onload = () => {
+                const result = []
+                const filecontent = reader.result
+                const filecontentLines = filecontent.split("\n")
+            }
+            reader.readAsText(file,"UTF-8")
+
+        })
+    }
+}
+
+export {ImportExport}
